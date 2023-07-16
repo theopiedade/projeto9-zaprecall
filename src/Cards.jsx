@@ -13,14 +13,21 @@ const cards = [
 
 export default function Cards () {
     return (
+        <>
         <Card>
            <h1>Pergunta 1</h1>
            <img src="/assets/seta_play.png"/>
         </Card>
+        <CardOpen>
+           <h1>O que é JSX?</h1>
+           <img src="/assets/seta_virar.png"/>
+        </CardOpen>
+        </>
     );
 }
 
 const Card = styled.div`
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -45,3 +52,33 @@ const Card = styled.div`
       height: 23px;
     }
 `;
+
+const CardOpen = styled.div`
+    margin-top: 10px;
+    width: 299px;
+    height: 131px;
+    border-radius: 5px;
+    background: #FFFFD4;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    h1 {
+        margin-left: 15px;
+        margin-top: 18px;
+        color: #333;
+        font-family: Recursive;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    img {
+        width: 30px;
+        height: 20px;
+        margin-left: 256px;
+        margin-bottom:10px;
+    }
+`
