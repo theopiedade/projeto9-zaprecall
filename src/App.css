@@ -5,19 +5,27 @@
   text-align: center;
 }
 
-body {
-  background-color: grey;
-}
 
-.containerApp {
-  width: 375px;
-  height: 667px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #FB6B6B;
-}
+
 
 .logo {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.logo img {
+  width: 52px;
+  height: 60px;
+}
+
+.logo h1 {
+  color: #FFF;
+  text-align: center;
+  font-family: Righteous;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
