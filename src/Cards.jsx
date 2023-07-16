@@ -22,6 +22,15 @@ export default function Cards () {
            <h1>O que é JSX?</h1>
            <img src="/assets/seta_virar.png"/>
         </CardOpen>
+        <CardOpen>
+           <h1>O que é JSX?</h1>
+           <ContainerButtons>
+                <Button color='#FF3030'>Não lembrei</Button>
+                <Button color='#FF922E'>Quase não lembrei</Button>
+                <Button color='#2FBE34'>Zap!</Button>
+
+           </ContainerButtons>
+        </CardOpen>
         </>
     );
 }
@@ -81,4 +90,28 @@ const CardOpen = styled.div`
         margin-left: 256px;
         margin-bottom:10px;
     }
+`
+const ContainerButtons = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 17px;
+    margin-bottom: 10px;
+`
+const Button = styled.button`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 9px;
+        height: 39px;
+        border-radius: 5px;
+        color: #FFF;
+        background: ${props => (props.color)};
+        font-family: Recursive;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        letter-spacing: 0em;
+        text-align: center;
 `
