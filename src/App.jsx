@@ -8,15 +8,15 @@ import Status from './Status';
 
 function App() {
   const [gameCount, setGameCount] = useState(0);
-  const [gameStatus, setGameStatus] = useState("init");
+
 
   return (
    <>
    <GlobalStyle/>
 	<ContainerApp>
 		<Logo/>
-		<Cards gameCount={gameCount} setGameCount={setGameCount} gameStatus={gameStatus} setGameStatus={setGameStatus} />
-		<Status gameCount={gameCount} setGameCount={setGameCount} gameStatus={gameStatus} setGameStatus={setGameStatus} />
+		<Cards gameCount={gameCount} setGameCount={setGameCount} />
+		<Status gameCount={gameCount} setGameCount={setGameCount}/>
 	</ContainerApp>
    </>
   )

@@ -9,8 +9,8 @@ export default function Status() {
 }
 
 const StatusBar = styled.div`
-    position: fixed;
-    bottom: 75px;
+    position: relative;
+    bottom: 0px;
     display: flex;
     flex-direction: column;
     width: 375px;
