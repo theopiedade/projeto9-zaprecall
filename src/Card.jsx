@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function Card({cardNum, cardStatus, setCardStatus, cardQuestion, cardAnswer}) {
-   
-    console.log("Card.jsx | cardStatus: "+cardStatus);
+export default function Card({cardNum, cardStatusArray, 
+    setCardStatusArray, cardQuestion, cardAnswer}) {
+    const [cardStatus, setCardStatus] = useState(cardStatusArray[cardNum]);
 
     function cardSelect(card, action) {
-        console.log("Carta selecionada: "+card);
-        console.log("Próxima ação: "+action);
+        let array = cardStatusArray;
+        console.log("Card.jsx | Array: "+array);
+        array[card] = action;
+        setCardStatusArray(array);
+        setCardStatus(action);
     }
-
+ 
     if (cardStatus === "closed") 
         return (
             <CardClosed>
