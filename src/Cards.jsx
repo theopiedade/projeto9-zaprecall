@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const cards = [
+const cardsList = [
 	{ question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
 	{ question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
 	{ question: "Componentes devem iniciar com __", answer: "Letra maiúscula" },
@@ -11,27 +12,21 @@ const cards = [
 	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
-export default function Cards () {
-    return (
-        <>
-        <Card>
-           <h1>Pergunta 1</h1>
-           <img src="/assets/seta_play.png"/>
-        </Card>
-        <CardOpen>
-           <h1>O que é JSX?</h1>
-           <img src="/assets/seta_virar.png"/>
-        </CardOpen>
-        <CardOpen>
-           <h1>O que é JSX?</h1>
-           <ContainerButtons>
-                <Button color='#FF3030'>Não lembrei</Button>
-                <Button color='#FF922E'>Quase não lembrei</Button>
-                <Button color='#2FBE34'>Zap!</Button>
 
-           </ContainerButtons>
-        </CardOpen>
-        </>
+export default function Cards ({gameCount}) {
+    const [statusCard, setStatusCard] = useState([]);
+
+    if (gameCount === 0 && gameStatus === "init") {
+        cardsList.map( (cards, i) => setStatusCard[i] = "closed" )
+    }
+
+    return (
+        cardsList.map( (cards, i) => 
+                <Card key={i}>
+                    <h1>Pergunta {i+1}</h1>
+                    <img src="/assets/seta_play.png"/>
+                </Card>
+              )
     );
 }
 
