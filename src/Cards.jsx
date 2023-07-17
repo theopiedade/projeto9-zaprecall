@@ -30,7 +30,8 @@ export default function Cards ({gameCount, setGameCount, gameAnswers, setGameAns
                 <Card key={i} cardNum={i} cardStatusArray={cardStatusArray} 
                 setCardStatusArray={setCardStatusArray}
                 cardQuestion={cards.question} cardAnswer={cards.answer}
-                gameAnswers={gameAnswers} setGameAnswers={setGameAnswers}
+                gameAnswers={gameAnswers} setGameAnswers={setGameAnswers} 
+                gameCount={gameCount} setGameCount={setGameCount}
                 />
               )
     );

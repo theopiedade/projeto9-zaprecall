@@ -3,8 +3,15 @@ import styled from 'styled-components';
 
 const answersColors = ["#FF3030","#FF922E", "#2FBE34"];
 
+const answersImgs = [
+    "/assets/icone_erro.png",
+    "/assets/icone_quase.png",
+    "/assets/icone_certo.png"
+];
+
 export default function Card({cardNum, cardStatusArray, 
-    setCardStatusArray, cardQuestion, cardAnswer, gameAnswers, setGameAnswers}) {
+    setCardStatusArray, cardQuestion, cardAnswer, gameAnswers, setGameAnswers, gameCount, setGameCount}) {
+
     const [cardStatus, setCardStatus] = useState(cardStatusArray[cardNum]);
 
     function cardSelect(card, action) {
@@ -20,6 +27,7 @@ export default function Card({cardNum, cardStatusArray,
         array[card] = action;
         setGameAnswers(array);
         setCardStatus(action);
+        setGameCount(gameCount+1);
     }
  
     if (cardStatus === "closed") 
@@ -41,14 +49,49 @@ export default function Card({cardNum, cardStatusArray,
             <CardOpen>
                 <h1>{cardAnswer}</h1>
                 <ContainerButtons>
-                    <Button color="#FF3030" onClick={() => answer(cardNum, "not")}>Não lembro</Button>
-                    <Button color="#FF922E" onClick={() => cardSelect(cardNum, "almost")}>Quase não lembro</Button>
-                    <Button color="#2FBE34" onClick={() => cardSelect(cardNum, "yes")}>Zap!</Button>
+                    <Button color="#FF3030" onClick={() => answer(cardNum, 0)}>Não lembro</Button>
+                    <Button color="#FF922E" onClick={() => cardSelect(cardNum, 1)}>Quase não lembro</Button>
+                    <Button color="#2FBE34" onClick={() => cardSelect(cardNum, 2)}>Zap!</Button>
                 </ContainerButtons>
             </CardOpen>
         )
+    else if (cardStatus === 0 || cardStatus === 1 || cardStatus === 2)
+        return (
+        <CardChecked color={answersColors[cardStatus]}>
+            <h1>Pergunta {cardNum+1}</h1>
+            <img src={answersImgs[cardStatus]}/>
+        </CardChecked>
+         )
 }
 
+
+const CardChecked = styled.div`
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 65px;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+    h1 {
+        margin-left: 10px;
+        color: ${props => (props.color)};
+        font-family: Recursive;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-decoration-line: strikethrough;
+    }
+    img {
+      margin-right: 10px;
+      width: 20px;
+      height: 23px;
+    }
+`;
 
 const CardClosed = styled.div`
     margin-top: 10px;
