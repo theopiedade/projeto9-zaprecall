@@ -26,39 +26,41 @@ export default function Card({cardNum, cardStatusArray,
         let array = gameAnswers;
         array[card] = action;
         setGameAnswers(array);
+        let cont = gameCount;
+        cont+=1;
+        setGameCount(cont);
         setCardStatus(action);
-        setGameCount(gameCount+1);
     }
  
     if (cardStatus === "closed") 
         return (
-            <CardClosed>
-                <h1>Pergunta {cardNum+1}</h1>
+            <CardClosed data-test="flashcard">
+                <h1 data-test="flashcard-text">Pergunta {cardNum+1}</h1>
                 <img onClick={() => cardSelect(cardNum, "open")} src="/assets/seta_play.png"/>
             </CardClosed>
         )
     else if (cardStatus === "open") 
         return (
-            <CardOpen>
-                <h1>{cardQuestion}</h1>
+            <CardOpen data-test="flashcard">
+                <h1 data-test="flashcard-text">{cardQuestion}</h1>
                 <img onClick={() => cardSelect(cardNum, "check")} src="/assets/seta_virar.png"/>
             </CardOpen>
         )
     else if (cardStatus === "check")
         return (
-            <CardOpen>
-                <h1>{cardAnswer}</h1>
+            <CardOpen data-test="flashcard">
+                <h1 data-test="flashcard-text">{cardAnswer}</h1>
                 <ContainerButtons>
-                    <Button color="#FF3030" onClick={() => answer(cardNum, 0)}>Não lembro</Button>
-                    <Button color="#FF922E" onClick={() => cardSelect(cardNum, 1)}>Quase não lembro</Button>
-                    <Button color="#2FBE34" onClick={() => cardSelect(cardNum, 2)}>Zap!</Button>
+                    <Button data-test="no-btn" color="#FF3030" onClick={() => answer(cardNum, 0)}>Não lembro</Button>
+                    <Button data-test="partial-btn" color="#FF922E" onClick={() => answer(cardNum, 1)}>Quase não lembro</Button>
+                    <Button data-test="zap-btn" color="#2FBE34" onClick={() => answer(cardNum, 2)}>Zap!</Button>
                 </ContainerButtons>
             </CardOpen>
         )
     else if (cardStatus === 0 || cardStatus === 1 || cardStatus === 2)
         return (
-        <CardChecked color={answersColors[cardStatus]}>
-            <h1>Pergunta {cardNum+1}</h1>
+        <CardChecked data-test="flashcard" color={answersColors[cardStatus]}>
+            <h1 data-test="flashcard-text">Pergunta {cardNum+1}</h1>
             <img src={answersImgs[cardStatus]}/>
         </CardChecked>
          )
@@ -84,7 +86,7 @@ const CardChecked = styled.div`
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        text-decoration-line: strikethrough;
+        text-decoration: line-through;
     }
     img {
       margin-right: 10px;

@@ -13,6 +13,8 @@ const StatusBar = styled.div`
     bottom: 0px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 375px;
     height: 70px;
     background: #FFF;
