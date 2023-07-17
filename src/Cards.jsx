@@ -12,27 +12,26 @@ const cardsList = [
 	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
 ]
 
-export default function Cards ({gameCount, setGameCount}) {
+export default function Cards ({gameCount, setGameCount, gameAnswers, setGameAnswers}) {
     const [cardStatusArray, setCardStatusArray] = useState([]);
     const [gameStatus, setGameStatus] = useState("init");
 
-    //console.log("Cards | gameCount:"+gameCount);
-    //console.log("Cards | gameStatus:"+gameStatus);
 
     if (gameCount === 0 && gameStatus === "init") {
         console.log("Cards.jsx | Entrou no setCardStatus");
         let array = [];
-        cardsList.map( 
-            (cards) => array.push("closed") 
-            ); 
+        cardsList.map( (cards) => array.push("closed") ); 
         setGameStatus("playing");
         setCardStatusArray(array);
     }
 
     return (
         cardsList.map( (cards, i) => 
-                <Card key={i} cardNum={i} cardStatusArray={cardStatusArray} setCardStatusArray={setCardStatusArray}
-                cardQuestion={cards.question} cardAnswer={cards.answer} />
+                <Card key={i} cardNum={i} cardStatusArray={cardStatusArray} 
+                setCardStatusArray={setCardStatusArray}
+                cardQuestion={cards.question} cardAnswer={cards.answer}
+                gameAnswers={gameAnswers} setGameAnswers={setGameAnswers}
+                />
               )
     );
 }

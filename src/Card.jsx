@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+const answersColors = ["#FF3030","#FF922E", "#2FBE34"];
+
 export default function Card({cardNum, cardStatusArray, 
-    setCardStatusArray, cardQuestion, cardAnswer}) {
+    setCardStatusArray, cardQuestion, cardAnswer, gameAnswers, setGameAnswers}) {
     const [cardStatus, setCardStatus] = useState(cardStatusArray[cardNum]);
 
     function cardSelect(card, action) {
@@ -10,6 +12,13 @@ export default function Card({cardNum, cardStatusArray,
         console.log("Card.jsx | Array: "+array);
         array[card] = action;
         setCardStatusArray(array);
+        setCardStatus(action);
+    }
+
+    function answer(card, action) {
+        let array = gameAnswers;
+        array[card] = action;
+        setGameAnswers(array);
         setCardStatus(action);
     }
  
@@ -32,9 +41,9 @@ export default function Card({cardNum, cardStatusArray,
             <CardOpen>
                 <h1>{cardAnswer}</h1>
                 <ContainerButtons>
-                    <Button color="#FF3030">Não lembro</Button>
-                    <Button color="#FF922E">Quase não lembro</Button>
-                    <Button color="#2FBE34">Zap!</Button>
+                    <Button color="#FF3030" onClick={() => answer(cardNum, "not")}>Não lembro</Button>
+                    <Button color="#FF922E" onClick={() => cardSelect(cardNum, "almost")}>Quase não lembro</Button>
+                    <Button color="#2FBE34" onClick={() => cardSelect(cardNum, "yes")}>Zap!</Button>
                 </ContainerButtons>
             </CardOpen>
         )

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function Status() {
+export default function Status({gameCount, gameAnswers}) {
     return (
         <StatusBar>
-            <h1>0/4 CONCLUÍDOS</h1>
+            <h1>{gameCount}/8 CONCLUÍDOS</h1>
         </StatusBar>
     )
 }

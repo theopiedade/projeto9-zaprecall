@@ -8,6 +8,7 @@ import Status from './Status';
 
 function App() {
   const [gameCount, setGameCount] = useState(0);
+  const [gameAnswers, setGameAnswers] = useState([]);
 
 
   return (
@@ -15,8 +16,10 @@ function App() {
    <GlobalStyle/>
 	<ContainerApp>
 		<Logo/>
-		<Cards gameCount={gameCount} setGameCount={setGameCount} />
-		<Status gameCount={gameCount} setGameCount={setGameCount}/>
+		<Cards gameCount={gameCount} setGameCount={setGameCount} 
+		gameAnswers={gameAnswers} setGameAnswers={setGameAnswers} />
+		<Status gameCount={gameCount} setGameCount={setGameCount}
+		gameAnswers={gameAnswers} setGameAnswers={setGameAnswers} />
 	</ContainerApp>
    </>
   )
